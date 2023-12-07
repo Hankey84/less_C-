@@ -54,7 +54,7 @@ void Print2DArray(int[,] matrix)
 int SumofDiagonal(int[,] matrix, bool IfMainDiagonal)
 {
     int sum = 0;
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < matrix.GetLength(0) && i < matrix.GetLength(1); i++)
     {
         if (IfMainDiagonal) {
             sum += matrix[i, i];

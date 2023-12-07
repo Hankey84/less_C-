@@ -44,7 +44,7 @@ void Print2DArray(int[,] matrix)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            Console.Write(matrix[i, j].ToString().PadRight(maxLength + 1)); // "Красивый" вывод массива
+            Console.Write(matrix[i, j].ToString().PadLeft(maxLength + 1)); // "Красивый" вывод массива
         }
         Console.WriteLine();
     }
@@ -52,12 +52,11 @@ void Print2DArray(int[,] matrix)
 
 void ReplaceEvenIndextoSquare(int[,] matrix)
 {
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < matrix.GetLength(0); i+=2)
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j+=2)
         {
-            if (i % 2 == 0 && j % 2 == 0)
-                matrix[i, j] = matrix[i, j] * matrix[i, j];
+            matrix[i, j] = (int)Math.Pow(matrix[i, j], 2);
         }
     }
 }
@@ -67,7 +66,7 @@ void ReplaceEvenIndextoSquare(int[,] matrix)
 int row = ReadInt("Введите количество строк 2-х мерного массива: ");
 int column = ReadInt("Введите количество столбцов 2-х мерного массива: ");
 
-int[,] myMatrix = Generate2DArray(row, column, 1, 100);
+int[,] myMatrix = Generate2DArray(row, column, -9, 10);
 
 Print2DArray(myMatrix);
 ReplaceEvenIndextoSquare(myMatrix);
